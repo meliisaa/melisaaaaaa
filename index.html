@@ -3,574 +3,862 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Yağmur Oto Lastik | Samsun Lastik Satış & Tamir</title>
-  <meta name="description" content="Yağmur Oto Lastik – Samsun Tekkeköy’de lastik alım-satım ve lastik tamiri. 07:00–21:00. Hemen arayın veya WhatsApp’tan yazın." />
+  <title>Yağmur Oto Lastik | Samsun Tekkeköy Lastik Satış & Lastik Tamiri</title>
+  <meta name="description" content="Yağmur Oto Lastik — Samsun Tekkeköy'de lastik alım-satım ve lastik tamiri. Hemen arayın veya WhatsApp'tan yazın. 07:00–21:00 açık." />
 
   <style>
     :root{
-      --bg:#f7f8fb;
-      --surface:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
+      --bg: #f6f8ff;
+      --surface: rgba(255,255,255,.82);
+      --card: #ffffff;
+      --text: #0b1220;
+      --muted: #50607a;
+      --line: rgba(10, 25, 60, .12);
 
-      --line:#e5e7eb;
-      --shadow: 0 14px 40px rgba(15,23,42,.10);
-
-      --brand:#2563eb;
-      --brand2:#1d4ed8;
-      --wa:#16a34a;
-
-      --radius:16px;
-      --radius2:22px;
+      --brand: #1f6feb;      /* mavi */
+      --brand2:#14b8a6;      /* teal */
+      --accent:#f97316;      /* turuncu vurgu */
+      --shadow: 0 18px 45px rgba(15, 23, 42, .10);
+      --shadow2: 0 10px 28px rgba(15, 23, 42, .08);
+      --radius: 18px;
     }
 
     *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    html,body{ height:100%; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
+      color: var(--text);
       background:
-        radial-gradient(900px 420px at 10% 0%, rgba(37,99,235,.10), transparent 60%),
-        radial-gradient(900px 420px at 90% 10%, rgba(29,78,216,.08), transparent 55%),
-        var(--bg);
+        radial-gradient(900px 500px at 12% 10%, rgba(31,111,235,.20), transparent 60%),
+        radial-gradient(800px 500px at 88% 18%, rgba(20,184,166,.18), transparent 55%),
+        radial-gradient(900px 650px at 60% 95%, rgba(249,115,22,.10), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 60%, #ffffff 100%);
+      overflow-x:hidden;
     }
-    a{ color:inherit; text-decoration:none; }
-    .container{ width:min(1120px, 92vw); margin:0 auto; }
 
-    header{
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1140px, 92vw); margin-inline:auto; }
+
+    /* Topbar */
+    .topbar{
       position: sticky;
-      top:0;
-      z-index:50;
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(10px);
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,.70);
       border-bottom: 1px solid var(--line);
     }
-    .nav{
+    .topbar__inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding: 14px 0;
+      padding: 12px 0;
     }
 
-    /* LOGO 3: Düz kurumsal yazı logo */
+    /* Logo (inline svg) */
     .brand{
       display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 220px;
+    }
+    .brand__mark{
+      width:40px; height:40px;
+      border-radius: 14px;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      flex: 0 0 auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      display:grid;
+      place-items:center;
+    }
+    .brand__text{
+      display:flex;
       flex-direction:column;
-      gap:2px;
-      min-width: 260px;
+      line-height:1.05;
     }
-    .brand .name{
-      font-weight: 950;
-      letter-spacing: -0.03em;
-      font-size: 16px;
-      line-height: 1.1;
+    .brand__name{
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size: 14.5px;
     }
-    .brand .name span{
-      color: var(--brand2);
-    }
-    .brand .sub{
+    .brand__sub{
       font-size: 12px;
       color: var(--muted);
-      line-height: 1.2;
+      margin-top: 2px;
+      white-space:nowrap;
     }
 
-    nav.menu{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
-    .menu a{
-      font-size:14px;
-      color:var(--muted);
+    nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    nav a{
+      font-size: 13px;
+      color: #23324a;
+      opacity: .9;
       padding: 8px 10px;
-      border-radius: 12px;
-      transition: background .15s ease, color .15s ease;
+      border-radius: 999px;
+      transition: .2s ease;
     }
-    .menu a:hover{ background: #f1f5f9; color: var(--text); }
+    nav a:hover{ background: rgba(31,111,235,.08); color: #0b2a66; }
 
-    .btns{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .actions{ display:flex; gap:10px; align-items:center; }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
       padding: 10px 14px;
-      border-radius: 14px;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      background: var(--surface);
-      font-weight:850;
-      font-size:14px;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      box-shadow: 0 6px 16px rgba(15,23,42,.06);
+      background: #fff;
+      box-shadow: var(--shadow2);
+      font-weight: 800;
+      font-size: 13px;
+      cursor:pointer;
+      transition: .18s ease;
       white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15,23,42,.10); }
-    .btn.solid{
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#fff;
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), #2d8cff);
       border-color: transparent;
-      box-shadow: 0 16px 30px rgba(37,99,235,.22);
+      color:#fff;
     }
-    .btn.wa{
-      background: rgba(22,163,74,.10);
-      border-color: rgba(22,163,74,.25);
-    }
-    .btn.ghost{
-      background: #fff;
-      border-color: rgba(37,99,235,.25);
-      color: var(--brand2);
+    .btn.whatsapp{
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: transparent;
+      color:#05210f;
+      font-weight: 900;
     }
 
     /* Hero */
-    .hero{ padding: 34px 0 18px; }
-    .heroGrid{
+    .hero{
+      padding: 46px 0 26px;
+    }
+    .hero__grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
       align-items: stretch;
     }
     .panel{
-      background: rgba(255,255,255,.92);
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: var(--radius2);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
+      padding: 22px;
+      position: relative;
       overflow:hidden;
     }
-    .heroContent{ padding: 26px; }
-
     .badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding: 8px 12px;
+      padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(37,99,235,.10);
-      border: 1px solid rgba(37,99,235,.18);
-      color: #1e3a8a;
-      font-size: 13px;
-      margin-bottom: 12px;
-      font-weight:800;
+      background: rgba(31,111,235,.10);
+      color: #0b2a66;
+      border: 1px solid rgba(31,111,235,.20);
+      font-weight: 800;
+      font-size: 12px;
     }
+
     h1{
-      margin:0 0 10px;
-      font-size: clamp(30px, 4vw, 44px);
-      letter-spacing: -0.03em;
-      line-height: 1.08;
+      margin: 12px 0 10px;
+      font-size: clamp(28px, 3vw, 44px);
+      letter-spacing: -0.6px;
+      line-height: 1.05;
     }
     .lead{
-      margin:0 0 16px;
+      margin: 0 0 16px;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
+      font-size: 14.5px;
+      line-height: 1.6;
+      max-width: 62ch;
     }
 
-    .quick{ display:flex; gap:10px; flex-wrap:wrap; margin: 14px 0 6px; }
-
-    .mini{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
-      margin-top: 16px;
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
     }
-    .mini .k{
+    .pill{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
       border: 1px solid var(--line);
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 12px;
-      color: var(--muted);
+      border-radius: 999px;
+      background:#fff;
+      box-shadow: var(--shadow2);
+      font-weight: 900;
       font-size: 13px;
     }
-    .mini .k strong{ display:block; color: var(--text); margin-bottom:4px; }
+    .pill small{ font-weight:800; color: var(--muted); }
 
-    .heroImg{
-      position:relative;
-      min-height: 320px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.92)),
-        url("https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=70");
-      background-size: cover;
-      background-position: center;
+    .hero__mini{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
     }
-    .heroImgOverlay{
-      position:absolute; inset:0;
-      padding: 18px;
-      display:flex; flex-direction:column;
-      justify-content:flex-end; gap:10px;
-    }
-    .note{
-      background: rgba(255,255,255,.92);
+    .miniCard{
+      background: rgba(255,255,255,.88);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: 0 10px 26px rgba(15,23,42,.10);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: var(--shadow2);
     }
-    .note .t{ margin:0 0 6px; font-weight:950; }
-    .note .s{ margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
+    .miniCard b{ display:block; font-size: 13px; }
+    .miniCard span{ display:block; margin-top: 4px; font-size: 12.5px; color: var(--muted); }
+
+    /* Right quote card */
+    .quoteTitle{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .quoteTitle h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:-.2px;
+    }
+    .hint{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .form{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .row2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    input, select, textarea{
+      width:100%;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 12px 12px;
+      background:#fff;
+      outline:none;
+      font-size: 13.5px;
+    }
+    textarea{ min-height: 84px; resize: vertical; }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(31,111,235,.45);
+      box-shadow: 0 0 0 4px rgba(31,111,235,.12);
+    }
+
+    .formActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
+    }
+    .btn.full{ flex:1; }
 
     /* Sections */
     section{ padding: 30px 0; }
-    .head{
+    .sectionTitle{
       display:flex;
-      justify-content:space-between;
       align-items:flex-end;
-      gap:14px;
+      justify-content:space-between;
+      gap: 14px;
       margin-bottom: 14px;
     }
-    .head h2{ margin:0; font-size: 22px; letter-spacing:-.01em; }
-    .head p{ margin:0; color:var(--muted); font-size: 14px; line-height:1.7; max-width: 620px; }
-
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
+    .sectionTitle h2{
+      margin:0;
+      font-size: 20px;
+      letter-spacing: -0.3px;
     }
-    .card{
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      padding: 16px;
-      box-shadow: 0 10px 26px rgba(15,23,42,.08);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .card:hover{ transform: translateY(-3px); box-shadow: 0 16px 40px rgba(15,23,42,.12); }
-    .ico{
-      width:44px; height:44px;
-      border-radius: 14px;
-      display:grid; place-items:center;
-      background: rgba(37,99,235,.10);
-      border: 1px solid rgba(37,99,235,.18);
-      margin-bottom: 10px;
-      font-weight: 900;
-      color: #1e3a8a;
-    }
-    .card h3{ margin:0 0 6px; font-size: 16px; }
-    .card p{ margin:0; color: var(--muted); font-size: 14px; line-height: 1.7; }
-
-    .two{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .sectionTitle p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
     }
 
-    /* FAQ */
-    .faq{
+    .cards{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
-    details{
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      padding: 14px;
-      box-shadow: 0 10px 26px rgba(15,23,42,.08);
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 16px;
     }
-    summary{
-      cursor:pointer;
-      font-weight:900;
-      list-style:none;
-    }
-    summary::-webkit-details-marker{ display:none; }
-    details p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    /* Contact */
-    .contact{
+    .icon{
+      width:40px; height:40px;
+      border-radius: 14px;
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      place-items:center;
+      background: rgba(31,111,235,.10);
+      border: 1px solid rgba(31,111,235,.18);
+      margin-bottom: 10px;
     }
-    .hint{ margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height:1.7; }
-    .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .card h3{ margin:0 0 6px; font-size: 15px; }
+    .card p{ margin:0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
 
-    .addr{
+    /* About split */
+    .split{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .list{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .li{
       display:flex;
       gap:10px;
       align-items:flex-start;
       padding: 12px;
+      border: 1px solid var(--line);
       border-radius: 16px;
-      border: 1px solid var(--line);
-      background: #fff;
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
     }
-    .addr b{ display:block; margin-bottom:4px; }
-    .addr span{ color: var(--muted); font-size: 14px; line-height:1.6; }
+    .tick{
+      width:22px; height:22px; border-radius: 8px;
+      background: rgba(20,184,166,.14);
+      border: 1px solid rgba(20,184,166,.25);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .li b{ display:block; font-size: 13.5px; }
+    .li span{ display:block; font-size: 12.8px; color: var(--muted); margin-top: 2px; line-height:1.5; }
 
-    .mapWrap{
-      width:100%;
-      height: 260px;
-      border-radius: var(--radius2);
-      overflow:hidden;
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 26px rgba(15,23,42,.08);
-      background: #fff;
+    /* FAQ */
+    details{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow2);
+      padding: 12px 14px;
     }
-    .mapWrap iframe{
-      width:100%;
-      height:100%;
-      border:0;
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 13.5px;
+      color: #152540;
     }
-
-    footer{
-      padding: 24px 0 40px;
-      border-top: 1px solid var(--line);
-      margin-top: 10px;
+    details p{
+      margin: 10px 0 0;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
+      font-size: 13.5px;
+      line-height: 1.6;
     }
-    .foot{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
 
-    .fab{ position: fixed; right: 16px; bottom: 16px; z-index: 80; }
+    /* Footer */
+    footer{
+      padding: 26px 0 34px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+    }
+    .footgrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .muted{ color: var(--muted); font-size: 13.5px; line-height:1.6; }
+    .kvs{ display:grid; gap: 10px; }
+    .kv{
+      background:#fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow2);
+    }
+    .kv b{ font-size: 12px; color:#1b2c49; display:block; }
+    .kv span{ font-size: 13.5px; color: var(--muted); display:block; margin-top: 4px; }
 
-    @media (max-width: 920px){
-      nav.menu{ display:none; }
-      .heroGrid{ grid-template-columns: 1fr; }
-      .heroImg{ min-height: 220px; }
-      .mini{ grid-template-columns: 1fr; }
-      .grid3{ grid-template-columns: 1fr; }
-      .two{ grid-template-columns: 1fr; }
-      .faq{ grid-template-columns: 1fr; }
-      .contact{ grid-template-columns: 1fr; }
+    /* Floating quick buttons */
+    .float{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index:60;
+    }
+
+    /* Animations (subtle) */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      transition: .6s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero__grid{ grid-template-columns: 1fr; }
+      nav{ display:none; }
       .brand{ min-width: auto; }
+      .cards{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .hero__mini{ grid-template-columns: 1fr; }
+      .row2{ grid-template-columns: 1fr; }
+      .float{ right: 12px; bottom: 12px; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; }
+      .reveal{ transition:none; transform:none; opacity:1; }
+      .reveal.show{ transform:none; }
+      .btn:hover{ transform:none; }
     }
   </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="#top">
-        <div class="name">YAĞMUR OTO <span>LASTİK</span></div>
-        <div class="sub">Samsun • Lastik Alım–Satım & Lastik Tamiri</div>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="Yağmur Oto Lastik ana sayfa">
+        <div class="brand__mark" aria-hidden="true">
+          <!-- Simple SVG logo -->
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1f6feb"/>
+                <stop offset="1" stop-color="#14b8a6"/>
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="22" stroke="url(#g)" stroke-width="6"/>
+            <circle cx="32" cy="32" r="7" fill="#0b1220" opacity=".9"/>
+            <path d="M32 10v10M32 44v10M10 32h10M44 32h10" stroke="#0b1220" opacity=".45" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand__text">
+          <div class="brand__name">Yağmur Oto Lastik</div>
+          <div class="brand__sub">Samsun • Lastik Alım–Satım & Lastik Tamiri</div>
+        </div>
       </a>
 
-      <nav class="menu" aria-label="Site menüsü">
+      <nav aria-label="Site menüsü">
         <a href="#hizmetler">Hizmetler</a>
         <a href="#hakkimizda">Hakkımızda</a>
         <a href="#sss">SSS</a>
         <a href="#iletisim">İletişim</a>
       </nav>
 
-      <div class="btns">
-        <a class="btn solid" href="tel:+905337793076">Hemen Ara</a>
-        <a class="btn wa" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp</a>
+      <div class="actions">
+        <a class="btn primary" href="tel:+905337793076">Hemen Ara</a>
+        <a class="btn whatsapp" target="_blank" rel="noopener"
+           href="https://wa.me/905337793076?text=Merhaba%20Ya%C4%9Fmur%20Oto%20Lastik,%20fiyat%20bilgisi%20almak%20istiyorum.">
+          WhatsApp
+        </a>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main id="top">
-  <div class="container">
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container hero__grid">
+      <div class="panel reveal">
+        <span class="badge">Kurumsal • Hızlı İletişim • Tekkeköy</span>
+        <h1>Lastik Satışı ve Lastik Tamiri</h1>
+        <p class="lead">
+          Yağmur Oto Lastik; Samsun <b>Tekkeköy</b> bölgesinde lastik alım–satım ve lastik tamiri hizmeti sunar.
+          Güvenli sürüş için doğru lastik seçimi, net bilgi ve hızlı dönüş.
+        </p>
 
-    <section class="hero">
-      <div class="heroGrid">
-        <div class="panel">
-          <div class="heroContent">
-            <div class="badge">Her gün açık • 07:00 – 21:00 • Tekkeköy</div>
-            <h1>Lastik Satışı ve Lastik Tamiri</h1>
-            <p class="lead">
-              Yağmur Oto Lastik, Samsun Tekkeköy’de <b>lastik alım–satım</b> ve <b>lastik tamiri</b> hizmetleri sunar.
-              Hızlı iletişim için arayın veya WhatsApp’tan yazın.
-            </p>
-
-            <div class="quick">
-              <a class="btn primary" href="tel:+905337793076">0 (533) 779 30 76</a>
-              <a class="btn primary" href="tel:+905336662969">0 (533) 666 29 69</a>
-              <a class="btn wa" href="https://wa.me/905336662969?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Yaz</a>
-            </div>
-
-            <div class="mini">
-              <div class="k"><strong>Hızlı Teklif</strong>Lastik ebatına göre telefonda bilgi.</div>
-              <div class="k"><strong>Kurumsal Hizmet</strong>Net iletişim, şeffaf bilgilendirme.</div>
-              <div class="k"><strong>Her Gün Açık</strong>07:00–21:00 hizmet.</div>
-            </div>
-          </div>
+        <div class="ctaRow" role="group" aria-label="İletişim hızlı aksiyonlar">
+          <a class="pill" href="tel:+905337793076">📞 <span>0 (533) 779 30 76</span></a>
+          <a class="pill" href="tel:+905336662969">📞 <span>0 (533) 666 29 69</span></a>
+          <a class="pill" target="_blank" rel="noopener"
+             href="https://wa.me/905337793076?text=Merhaba%20Ya%C4%9Fmur%20Oto%20Lastik,%20lastik%20fiyat%C4%B1%20ve%20tamir%20i%C3%A7in%20bilgi%20alabilir%20miyim%3F">
+            💬 <span>WhatsApp’tan Yaz</span>
+          </a>
         </div>
 
-        <div class="panel heroImg" role="img" aria-label="Lastik görseli">
-          <div class="heroImgOverlay">
-            <div class="note">
-              <p class="t">Konum: Tekkeköy</p>
-              <p class="s">Cumhuriyet Mahallesi, 55330 Tekkeköy / Samsun</p>
-            </div>
-            <div class="note">
-              <p class="t">İletişim</p>
-              <p class="s">Arayın veya WhatsApp’tan yazın, hızlı dönüş yapalım.</p>
-            </div>
+        <div class="hero__mini" aria-label="Hızlı avantajlar">
+          <div class="miniCard">
+            <b>Çalışma Saatleri</b>
+            <span>Haftanın her günü<br><b>07:00 – 21:00</b></span>
+          </div>
+          <div class="miniCard">
+            <b>Konum</b>
+            <span>Cumhuriyet, 55330<br>Tekkeköy/Samsun</span>
+          </div>
+          <div class="miniCard">
+            <b>Odak</b>
+            <span>Balans/rot yok<br><b>Lastik</b> hizmeti</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="hizmetler">
-      <div class="head">
+      <aside class="panel reveal" aria-label="Hızlı teklif paneli">
+        <div class="quoteTitle">
+          <h2>Hızlı Teklif / Randevu</h2>
+          <div class="hint">Bilgileri doldur → WhatsApp’a hazır mesaj</div>
+        </div>
+
+        <form class="form" id="quoteForm">
+          <div class="row2">
+            <div>
+              <label>Ad Soyad</label>
+              <input id="qName" placeholder="Örn: Melisa" autocomplete="name" />
+            </div>
+            <div>
+              <label>Telefon</label>
+              <input id="qPhone" placeholder="05xx xxx xx xx" inputmode="tel" />
+            </div>
+          </div>
+
+          <div class="row2">
+            <div>
+              <label>Hizmet</label>
+              <select id="qService">
+                <option>Lastik Alım–Satım</option>
+                <option>Lastik Tamiri</option>
+                <option>Fiyat / Stok Bilgisi</option>
+              </select>
+            </div>
+            <div>
+              <label>Lastik Ebatı (opsiyonel)</label>
+              <input id="qSize" placeholder="Örn: 205/55 R16" />
+            </div>
+          </div>
+
+          <div>
+            <label>Not (opsiyonel)</label>
+            <textarea id="qNote" placeholder="Örn: 4 adet yazlık lastik fiyatı, tarih vb."></textarea>
+          </div>
+
+          <div class="formActions">
+            <button class="btn primary full" type="button" id="sendWhatsapp">WhatsApp’a Gönder</button>
+            <a class="btn full" href="#iletisim">İletişim Bilgileri</a>
+          </div>
+
+          <p class="hint" style="margin:6px 0 0;">
+            * Form gönderimi site içinde kayıt tutmaz. Mesajı WhatsApp üzerinden siz gönderirsiniz.
+          </p>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SERVICES -->
+  <section id="hizmetler">
+    <div class="container">
+      <div class="sectionTitle">
         <div>
           <h2>Hizmetler</h2>
-          <p>Odak: <b>lastik satış</b> ve <b>lastik tamiri</b>.</p>
+          <p>Yalın, net ve kurumsal hizmet listesi.</p>
         </div>
-        <p>Detaylı bilgi ve fiyat için telefon/WhatsApp ile ulaşabilirsiniz.</p>
+        <p class="hint">İstersen buraya “kampanyalar” bölümü de ekleriz.</p>
       </div>
 
-      <div class="grid3">
-        <div class="card">
-          <div class="ico">🛞</div>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">🛞</div>
           <h3>Lastik Alım–Satım</h3>
-          <p>İhtiyacınıza uygun lastik seçenekleri için arayıp bilgi alabilirsiniz.</p>
+          <p>İhtiyacınıza uygun lastik seçenekleri için arayın; ebat ve kullanım tipine göre yönlendirelim.</p>
         </div>
 
-        <div class="card">
-          <div class="ico">🧰</div>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">🧰</div>
           <h3>Lastik Tamiri</h3>
-          <p>Patlak/hasar durumlarında uygunluk kontrolü sonrası onarım.</p>
+          <p>Patlak/hasar durumlarında uygunluk kontrolü sonrası güvenli onarım.</p>
         </div>
 
-        <div class="card">
-          <div class="ico">📍</div>
-          <h3>Kolay Konum</h3>
-          <p>Tekkeköy’de konumumuzdan yol tarifi alabilirsiniz.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="hakkimizda">
-      <div class="head">
-        <div>
-          <h2>Hakkımızda</h2>
-          <p>Güven veren, kurumsal hizmet anlayışı.</p>
-        </div>
-        <p>Amacımız: güvenli sürüş için doğru yönlendirme ve hızlı servis.</p>
-      </div>
-
-      <div class="two">
-        <div class="card">
-          <h3>Yağmur Oto Lastik</h3>
-          <p>
-            Samsun Tekkeköy’de lastik alım–satım ve lastik tamiri alanında hizmet veriyoruz.
-            Müşteri memnuniyetini ve şeffaf iletişimi ön planda tutarız.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Çalışma Saatleri</h3>
-          <p><b>Haftanın her günü:</b> 07:00 – 21:00</p>
-          <p class="hint">Yoğunluk durumuna göre arayarak hızlı bilgi alabilirsiniz.</p>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">☎️</div>
+          <h3>Hızlı İletişim</h3>
+          <p>Telefon ve WhatsApp üzerinden hızlı teklif, stok ve fiyat bilgisi.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="sss">
-      <div class="head">
-        <div>
-          <h2>Sık Sorulan Sorular</h2>
-          <p>En çok gelen sorulara kısa cevaplar.</p>
-        </div>
-        <p>Detaylı bilgi için arayın veya WhatsApp’tan yazın.</p>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>Lastik tamiri her patlakta yapılır mı?</summary>
-          <p>Hasarın yeri ve büyüklüğüne göre değişir. Kontrol sonrası uygunluk bilgisi verilir.</p>
-        </details>
-
-        <details>
-          <summary>Fiyat bilgisini nasıl alabilirim?</summary>
-          <p>Lastik ebatı ve ihtiyaca göre değiştiği için telefonda hızlıca bilgi veriyoruz.</p>
-        </details>
-
-        <details>
-          <summary>Ne kadar sürede dönüş yaparsınız?</summary>
-          <p>Uygun olduğumuz ilk anda geri dönüş sağlarız. En hızlı kanal: telefon veya WhatsApp.</p>
-        </details>
-
-        <details>
-          <summary>Konumunuza nasıl ulaşırım?</summary>
-          <p>İletişim bölümündeki haritadan “Haritada Aç” ile yol tarifi alabilirsiniz.</p>
-        </details>
-      </div>
-    </section>
-
-    <section id="iletisim">
-      <div class="head">
-        <div>
-          <h2>İletişim</h2>
-          <p>Fiyat/teklif ve randevu için hızlı iletişim.</p>
-        </div>
-        <p>Tekkeköy / Samsun</p>
-      </div>
-
-      <div class="contact">
-        <div class="card">
-          <h3>Telefon</h3>
-          <div class="row">
-            <a class="btn solid" href="tel:+905337793076">0 (533) 779 30 76</a>
-            <a class="btn solid" href="tel:+905336662969">0 (533) 666 29 69</a>
+  <!-- ABOUT -->
+  <section id="hakkimizda">
+    <div class="container split">
+      <div class="panel reveal">
+        <div class="sectionTitle" style="margin-bottom:10px;">
+          <div>
+            <h2>Hakkımızda</h2>
+            <p>Güven veren duruş, net iletişim, hızlı servis.</p>
           </div>
-          <p class="hint">Her gün 07:00 – 21:00</p>
         </div>
 
-        <div class="card">
-          <h3>WhatsApp</h3>
-          <div class="row">
-            <a class="btn wa" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">0 (533) 779 30 76</a>
-            <a class="btn wa" href="https://wa.me/905336662969?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">0 (533) 666 29 69</a>
-          </div>
-          <p class="hint">Mesaj atın, en kısa sürede dönüş yapalım.</p>
-        </div>
+        <p class="muted" style="margin-top:6px;">
+          Yağmur Oto Lastik, Samsun Tekkeköy’de lastik satış ve lastik tamiri odaklı çalışır.
+          Amacımız; güvenli sürüş için doğru yönlendirme ve hızlı çözüm sunmaktır.
+        </p>
 
-        <div class="card">
-          <h3>Adres</h3>
-          <div class="addr">
-            <div class="ico" style="margin:0;">📍</div>
+        <div class="list">
+          <div class="li">
+            <div class="tick" aria-hidden="true">✓</div>
             <div>
-              <b>Cumhuriyet Mahallesi</b>
-              <span>55330 Tekkeköy / Samsun</span>
-              <div class="row" style="margin-top:10px;">
-                <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Cumhuriyet%20Mahallesi%2055330%20Tekkek%C3%B6y%20Samsun" target="_blank" rel="noreferrer">Haritada Aç</a>
-              </div>
+              <b>Şeffaf Bilgi</b>
+              <span>Fiyat, stok ve uygunluk konusunda net, kısa ve anlaşılır iletişim.</span>
             </div>
           </div>
-          <p class="hint">Yol tarifi için “Haritada Aç” kullanabilirsiniz.</p>
+          <div class="li">
+            <div class="tick" aria-hidden="true">✓</div>
+            <div>
+              <b>Yerel ve Hızlı</b>
+              <span>Tekkeköy ve çevresi için hızlı dönüş ve planlama.</span>
+            </div>
+          </div>
+          <div class="li">
+            <div class="tick" aria-hidden="true">✓</div>
+            <div>
+              <b>Net Hizmet Kapsamı</b>
+              <span>Balans/rot veya araç tamiri yok; odak: lastik satış ve lastik tamiri.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <div class="sectionTitle" style="margin-bottom:10px;">
+          <div>
+            <h2>Konum</h2>
+            <p>Tek tıkla yol tarifi.</p>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Harita</h3>
-          <div class="mapWrap" aria-label="Google Maps">
+        <div class="kv">
+          <b>Adres</b>
+          <span>Cumhuriyet, 55330 Tekkeköy/Samsun</span>
+        </div>
+        <div class="kv" style="margin-top:10px;">
+          <b>Çalışma Saatleri</b>
+          <span>Haftanın her günü • 07:00 – 21:00</span>
+        </div>
+
+        <div class="kv" style="margin-top:10px;">
+          <b>Harita</b>
+          <span class="muted">Google Haritalar açılır</span>
+          <div style="margin-top:10px; border-radius:16px; overflow:hidden; border:1px solid var(--line);">
             <iframe
+              title="Yağmur Oto Lastik Harita"
+              width="100%"
+              height="240"
+              style="border:0"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps?q=Cumhuriyet%20Mahallesi%2055330%20Tekkek%C3%B6y%20Samsun&output=embed">
             </iframe>
           </div>
-          <p class="hint">Konuma tıklayıp yol tarifi alabilirsiniz.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <div class="foot">
+  <!-- FAQ -->
+  <section id="sss">
+    <div class="container">
+      <div class="sectionTitle">
         <div>
-          <strong style="color:var(--text);">YAĞMUR OTO LASTİK</strong><br/>
-          Cumhuriyet Mahallesi, 55330 Tekkeköy / Samsun<br/>
-          <span>Her gün: 07:00 – 21:00</span>
-        </div>
-        <div>
-          Telefon:
-          <a href="tel:+905337793076">0 (533) 779 30 76</a> •
-          <a href="tel:+905336662969">0 (533) 666 29 69</a>
+          <h2>Sık Sorulan Sorular</h2>
+          <p>Kurumsal ve kısa cevaplar.</p>
         </div>
       </div>
-    </footer>
 
+      <details class="reveal">
+        <summary>Balans/rot yapıyor musunuz?</summary>
+        <p>Hayır. Balans/rot veya araç tamiri hizmetimiz yok. Odak alanımız lastik alım–satım ve lastik tamiridir.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Lastik ebatını bilmiyorsam ne yapmalıyım?</summary>
+        <p>Ruhsat bilgisi veya lastik üzerindeki ölçüyü (ör: 205/55 R16) paylaşmanız yeterli. WhatsApp’tan yazabilirsiniz.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Çalışma saatleriniz nedir?</summary>
+        <p>Haftanın her günü 07:00 – 21:00 arası hizmet veriyoruz.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="iletisim">
+    <div class="container">
+      <div class="sectionTitle">
+        <div>
+          <h2>İletişim</h2>
+          <p>Hemen arayın veya WhatsApp’tan yazın.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">📞</div>
+          <h3>Telefon</h3>
+          <p style="margin-bottom:10px;">
+            <a class="btn primary" href="tel:+905337793076">0 (533) 779 30 76</a>
+          </p>
+          <p>
+            <a class="btn" href="tel:+905336662969">0 (533) 666 29 69</a>
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">💬</div>
+          <h3>WhatsApp</h3>
+          <p>Tek tıkla hazır mesajla yazın.</p>
+          <p style="margin-top:10px;">
+            <a class="btn whatsapp" target="_blank" rel="noopener"
+               href="https://wa.me/905337793076?text=Merhaba%20Ya%C4%9Fmur%20Oto%20Lastik,%20fiyat%20bilgisi%20almak%20istiyorum.">
+              WhatsApp’tan Yaz
+            </a>
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">📍</div>
+          <h3>Adres</h3>
+          <p>Cumhuriyet, 55330 Tekkeköy/Samsun</p>
+          <p style="margin-top:10px;">
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://www.google.com/maps?q=Cumhuriyet%20Mahallesi%2055330%20Tekkek%C3%B6y%20Samsun">
+              Yol Tarifi Al
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footgrid">
+      <div>
+        <div class="brand" style="gap:12px;">
+          <div class="brand__mark" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g2" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#1f6feb"/>
+                  <stop offset="1" stop-color="#14b8a6"/>
+                </linearGradient>
+              </defs>
+              <circle cx="32" cy="32" r="22" stroke="url(#g2)" stroke-width="6"/>
+              <circle cx="32" cy="32" r="7" fill="#0b1220" opacity=".9"/>
+              <path d="M32 10v10M32 44v10M10 32h10M44 32h10" stroke="#0b1220" opacity=".45" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand__text">
+            <div class="brand__name">Yağmur Oto Lastik</div>
+            <div class="brand__sub">Samsun • Tekkeköy • 07:00–21:00</div>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:10px;">
+          © <span id="year"></span> Yağmur Oto Lastik. Tüm hakları saklıdır.
+        </p>
+      </div>
+
+      <div class="kvs">
+        <div class="kv">
+          <b>Hızlı İletişim</b>
+          <span>0 (533) 779 30 76 • 0 (533) 666 29 69</span>
+        </div>
+        <div class="kv">
+          <b>Adres</b>
+          <span>Cumhuriyet, 55330 Tekkeköy/Samsun</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating buttons -->
+  <div class="float" aria-label="Hızlı iletişim kısayolları">
+    <a class="btn primary" href="tel:+905337793076">📞 Ara</a>
+    <a class="btn whatsapp" target="_blank" rel="noopener"
+       href="https://wa.me/905337793076?text=Merhaba%20Ya%C4%9Fmur%20Oto%20Lastik,%20fiyat%20bilgisi%20almak%20istiyorum.">
+      💬 WhatsApp
+    </a>
   </div>
-</main>
 
-<div class="fab">
-  <a class="btn wa" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp</a>
-</div>
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Reveal on scroll
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el=>io.observe(el));
+
+    // WhatsApp quote builder
+    const $ = (id)=>document.getElementById(id);
+    const send = document.getElementById("sendWhatsapp");
+
+    send.addEventListener("click", ()=>{
+      const name = $("qName").value.trim();
+      const phone = $("qPhone").value.trim();
+      const service = $("qService").value.trim();
+      const size = $("qSize").value.trim();
+      const note = $("qNote").value.trim();
+
+      let msg = "Merhaba Yağmur Oto Lastik, bilgi almak istiyorum.%0A";
+      msg += `Hizmet: ${encodeURIComponent(service)}%0A`;
+      if(size) msg += `Lastik Ebatı: ${encodeURIComponent(size)}%0A`;
+      if(name) msg += `Ad Soyad: ${encodeURIComponent(name)}%0A`;
+      if(phone) msg += `Telefon: ${encodeURIComponent(phone)}%0A`;
+      if(note) msg += `Not: ${encodeURIComponent(note)}%0A`;
+      msg += "Teşekkürler.";
+
+      const url = `https://wa.me/905337793076?text=${msg}`;
+      window.open(url, "_blank", "noopener");
+    });
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const href = a.getAttribute("href");
+        if(!href || href === "#") return;
+        const target = document.querySelector(href);
+        if(!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
 </body>
 </html>
