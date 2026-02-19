@@ -1,161 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Melisa</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Yağmur Oto Lastik | Samsun Lastik Satış & Tamir</title>
+  <meta name="description" content="Yağmur Oto Lastik – Samsun’da lastik alım-satım ve lastik tamiri. Hemen arayın veya WhatsApp’tan yazın." />
 
   <style>
     :root{
-      --bg1:#0b1b4a;
-      --bg2:#060b1a;
-      --bg3:#4a1fbf;
-      --card: rgba(6, 10, 20, 0.55);
-      --border: rgba(255,255,255,0.14);
+      /* Tema: 2C (Antrasit + Mavi) */
+      --bg0:#0b1220;
+      --bg1:#0f172a;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12);
       --text:#e5e7eb;
       --muted:#cbd5e1;
-      --green:#22c55e;
-      --accent:#60a5fa;
-      --accent2:#a78bfa;
+
+      --blue:#3b82f6;
+      --blue2:#60a5fa;
+
+      --wa:#22c55e;
+
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
     }
 
     *{ box-sizing:border-box; }
-
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 520px at 12% 10%, rgba(59,130,246,.22), transparent 60%),
+        radial-gradient(820px 520px at 88% 16%, rgba(96,165,250,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
+    }
+
+    a{ color:inherit; }
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+
+    /* Header */
+    header{
+      position: sticky;
+      top:0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.58);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
       display:flex;
       align-items:center;
-      justify-content:center;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 10% 12%, #1d4ed8 0%, transparent 60%),
-        radial-gradient(900px 600px at 92% 18%, #7c3aed 0%, transparent 55%),
-        linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
-      overflow:hidden;
-      position:relative;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 0;
     }
-
-    /* Floating blobs */
-    .blob{
-      position:fixed;
-      width:420px;
-      height:420px;
-      border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
-      filter: blur(32px);
-      opacity:.35;
-      pointer-events:none;
-      animation: float 12s ease-in-out infinite;
-      z-index:0;
-    }
-    .blob.one{
-      top: 70px; left:-150px;
-      background: radial-gradient(circle at 30% 30%, var(--accent), transparent 60%);
-    }
-    .blob.two{
-      bottom:-170px; right:-170px;
-      background: radial-gradient(circle at 70% 40%, var(--accent2), transparent 60%);
-      animation-duration: 14s;
-      animation-direction: reverse;
-    }
-    @keyframes float{
-      0%   { transform: translate(0,0) scale(1) rotate(0deg); }
-      50%  { transform: translate(40px,-25px) scale(1.08) rotate(8deg); }
-      100% { transform: translate(0,0) scale(1) rotate(0deg); }
-    }
-
-    /* Card enter */
-    .card{
-      width: min(640px, 92vw);
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 18px 70px rgba(0,0,0,.45);
-      backdrop-filter: blur(10px);
-      position:relative;
-      z-index:1;
-
-      opacity:0;
-      transform: translateY(14px);
-      animation: enter .85s cubic-bezier(.2,.8,.2,1) forwards;
-    }
-    @keyframes enter{
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(30px, 4vw, 44px);
-      letter-spacing: -0.02em;
-      line-height:1.1;
-    }
-
-    p{
-      margin:0 0 18px;
-      color: var(--muted);
-      line-height:1.6;
-      font-size: 16px;
-    }
-
-    /* waving hand */
-    .wave{
-      display:inline-block;
-      transform-origin: 70% 70%;
-      animation: wave 1.4s ease-in-out infinite;
-    }
-    @keyframes wave{
-      0%,100%{ transform: rotate(0deg); }
-      20%{ transform: rotate(14deg); }
-      40%{ transform: rotate(-6deg); }
-      60%{ transform: rotate(10deg); }
-      80%{ transform: rotate(-2deg); }
-    }
-
-    .tags{
+    .brand{
       display:flex;
-      flex-wrap:wrap;
       gap:10px;
-      margin: 10px 0 22px;
+      align-items:center;
+      text-decoration:none;
+      min-width: 220px;
     }
-    .tag{
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-size: 14px;
-      color: #dbeafe;
+    .logo{
+      width:38px; height:38px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      font-weight: 900;
+      color:#061022;
+      background: linear-gradient(135deg, rgba(59,130,246,.96), rgba(96,165,250,.86));
+      box-shadow: 0 12px 30px rgba(59,130,246,.22);
+    }
+    .brand .t1{ font-weight:900; font-size:15px; letter-spacing:.2px; }
+    .brand .t2{ font-size:12px; color:var(--muted); opacity:.85; margin-top:2px; }
 
-      opacity:0;
-      transform: translateY(10px);
-      animation: pop .6s ease forwards;
-    }
-    .tag:nth-child(1){ animation-delay:.25s; }
-    .tag:nth-child(2){ animation-delay:.35s; }
-    .tag:nth-child(3){ animation-delay:.45s; }
-    .tag:nth-child(4){ animation-delay:.55s; }
-    @keyframes pop{
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    .actions{
-      display:flex;
-      gap:12px;
+    nav.menu{
+      display:flex; gap:6px; align-items:center;
       flex-wrap:wrap;
     }
+    .menu a{
+      text-decoration:none;
+      font-size:14px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: background .15s ease, color .15s ease;
+    }
+    .menu a:hover{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+
+    .btns{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
     .btn{
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:10px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-      color: var(--text);
       text-decoration:none;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      will-change: transform;
+      font-weight: 800;
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
     }
     .btn:hover{
       transform: translateY(-2px);
@@ -163,44 +116,484 @@
       border-color: rgba(255,255,255,.22);
     }
     .btn.primary{
-      background: linear-gradient(90deg, rgba(96,165,250,.95), rgba(167,139,250,.95));
-      color:#0b1220;
-      font-weight:800;
+      color:#061022;
+      background: linear-gradient(90deg, rgba(59,130,246,.96), rgba(96,165,250,.90));
       border-color: rgba(255,255,255,.18);
     }
-    .btn.primary:hover{
-      transform: translateY(-3px) scale(1.01);
+    .btn.wa{
+      background: rgba(34,197,94,.14);
+      border-color: rgba(34,197,94,.35);
     }
 
-    /* reduce motion */
+    /* Hero */
+    .hero{ padding: 44px 0 24px; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .panel{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroContent{ padding: 26px; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.25);
+      color: #dbeafe;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+    }
+    .lead{
+      margin:0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .quick{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin: 14px 0 6px;
+    }
+
+    .chips{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .chip{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .chip strong{ display:block; color: var(--text); margin-bottom:4px; }
+
+    .heroImg{
+      position:relative;
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62)),
+        url("https://images.unsplash.com/photo-1600275465584-5b23f2a3f6cb?auto=format&fit=crop&w=1600&q=70");
+      background-size: cover;
+      background-position: center;
+    }
+    .heroImgOverlay{
+      position:absolute; inset:0;
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      gap:10px;
+    }
+    .glass{
+      background: rgba(11,18,32,.62);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 14px;
+      backdrop-filter: blur(8px);
+    }
+    .glass .t{ margin:0 0 6px; font-weight:900; }
+    .glass .s{ margin:0; color: var(--muted); font-size: 13px; line-height:1.55; }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:14px;
+      margin-bottom: 14px;
+    }
+    .head h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -.01em;
+    }
+    .head p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    .card{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.18);
+    }
+    .ico{
+      width:44px; height:44px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(59,130,246,.14);
+      border: 1px solid rgba(59,130,246,.25);
+      margin-bottom: 10px;
+      font-weight: 900;
+      color: #dbeafe;
+    }
+    .card h3{ margin:0 0 6px; font-size: 16px; }
+    .card p{ margin:0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    /* About */
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    details{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .contact .card{ padding: 18px; }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .hint{ margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height:1.6; }
+
+    /* Map placeholder */
+    .mapBox{
+      height: 220px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      display:grid;
+      place-items:center;
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+      padding: 14px;
+    }
+
+    footer{
+      padding: 26px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+
+    /* Floating WhatsApp */
+    .fab{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 80;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      nav.menu{ display:none; }
+      .heroGrid{ grid-template-columns: 1fr; }
+      .heroImg{ min-height: 260px; }
+      .chips{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .about{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .brand{ min-width: auto; }
+    }
+
     @media (prefers-reduced-motion: reduce){
-      .blob,.card,.tag,.wave{ animation:none !important; }
-      .card,.tag{ opacity:1 !important; transform:none !important; }
+      *{ scroll-behavior:auto; }
+      .btn, .card{ transition:none !important; }
     }
   </style>
 </head>
 
 <body>
-  <!-- animated background blobs -->
-  <div class="blob one"></div>
-  <div class="blob two"></div>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#top">
+        <div class="logo">Y</div>
+        <div>
+          <div class="t1">Yağmur Oto Lastik</div>
+          <div class="t2">Samsun • Lastik Alım-Satım & Tamir</div>
+        </div>
+      </a>
 
-  <!-- content -->
-  <main class="card">
-    <h1>Merhaba, ben Melisa <span class="wave">👋</span></h1>
-    <p>Bu sayfa GitHub Pages’te canlı. Animasyonlar: kart giriş, etiket pop, arka plan blob ve el sallama ✨</p>
+      <nav class="menu" aria-label="Site menüsü">
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#sss">SSS</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
 
-    <div class="tags">
-      <span class="tag">HTML</span>
-      <span class="tag">CSS</span>
-      <span class="tag">Animasyon</span>
-      <span class="tag">GitHub Pages</span>
+      <div class="btns">
+        <a class="btn primary" href="tel:+905337793076">Hemen Ara</a>
+        <a class="btn wa" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
     </div>
+  </div>
+</header>
 
-    <div class="actions">
-      <a class="btn primary" href="https://meliisaa.github.io/melisaaaaaa/" target="_blank" rel="noreferrer">Canlı Site</a>
-      <a class="btn" href="https://github.com/meliisaa/melisaaaaaa" target="_blank" rel="noreferrer">Repo</a>
-    </div>
-  </main>
+<main id="top">
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="panel">
+          <div class="heroContent">
+            <div class="badge">Kurumsal • Hızlı İletişim • Samsun</div>
+            <h1>Lastik Satışı ve Lastik Tamiri</h1>
+            <p class="lead">
+              Yağmur Oto Lastik, Samsun’da lastik alım-satım ve lastik tamiri hizmetleri sunar.
+              Güvenli sürüş için doğru lastik seçimi ve hızlı servis.
+            </p>
+
+            <div class="quick">
+              <a class="btn primary" href="tel:+905337793076">0 (533) 779 30 76</a>
+              <a class="btn primary" href="tel:+905336662969">0 (533) 666 29 69</a>
+              <a class="btn wa" href="https://wa.me/905336662969?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Yaz</a>
+            </div>
+
+            <div class="chips">
+              <div class="chip"><strong>Hızlı Tamir</strong>Uygunluk kontrolü sonrası hızlı çözüm.</div>
+              <div class="chip"><strong>Güvenli İşçilik</strong>Şeffaf bilgi ve temiz işçilik.</div>
+              <div class="chip"><strong>Müşteri Odaklı</strong>Net iletişim, hızlı dönüş.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel heroImg" role="img" aria-label="Lastik görseli">
+          <div class="heroImgOverlay">
+            <div class="glass">
+              <p class="t">Hızlı Teklif</p>
+              <p class="s">Lastik ebatı ve ihtiyaca göre telefonda fiyat bilgisi.</p>
+            </div>
+            <div class="glass">
+              <p class="t">Samsun’da Hizmet</p>
+              <p class="s">Merkez ve çevre ilçeler için iletişime geçin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="hizmetler">
+      <div class="head">
+        <div>
+          <h2>Hizmetler</h2>
+          <p>Yalın, doğru ve kurumsal bir hizmet listesi.</p>
+        </div>
+        <p>Balans/rot veya araç tamiri yok — odak: <b>lastik satış</b> ve <b>lastik tamiri</b>.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="ico">🛞</div>
+          <h3>Lastik Alım–Satım</h3>
+          <p>İhtiyacınıza uygun lastik seçenekleri için arayıp bilgi alabilirsiniz.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico">🧰</div>
+          <h3>Lastik Tamiri</h3>
+          <p>Patlak/hasar durumlarında uygunluk kontrolü sonrası onarım.</p>
+        </div>
+
+        <div class="card">
+          <div class="ico">✅</div>
+          <h3>Hızlı İletişim</h3>
+          <p>Telefon ve WhatsApp üzerinden hızlı teklif ve randevu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="hakkimizda">
+      <div class="head">
+        <div>
+          <h2>Hakkımızda</h2>
+          <p>Kurumsal duruş, güven veren hizmet anlayışı.</p>
+        </div>
+        <p>Amacımız: güvenli sürüş için doğru yönlendirme ve hızlı servis.</p>
+      </div>
+
+      <div class="about">
+        <div class="card">
+          <h3>Yağmur Oto Lastik</h3>
+          <p>
+            Samsun’da lastik alım-satım ve lastik tamiri alanında hizmet veriyoruz.
+            Müşteri memnuniyetini, şeffaf iletişimi ve temiz işçiliği ön planda tutarız.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Nasıl çalışıyoruz?</h3>
+          <p>
+            1) İhtiyacınızı alırız → 2) Lastik ebatına göre seçenekleri paylaşırız →
+            3) Uygun çözüm + hızlı servis → 4) Teslim.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="sss">
+      <div class="head">
+        <div>
+          <h2>Sık Sorulan Sorular</h2>
+          <p>En çok gelen sorulara kısa cevaplar.</p>
+        </div>
+        <p>Detaylı bilgi için arayın veya WhatsApp’tan yazın.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Lastik tamiri her patlakta yapılır mı?</summary>
+          <p>Hasarın yeri ve büyüklüğüne göre değişir. Kontrol sonrası uygunluk bilgisi verilir.</p>
+        </details>
+
+        <details>
+          <summary>Fiyat bilgisini nasıl alabilirim?</summary>
+          <p>Lastik ebatı ve ihtiyaca göre değiştiği için telefonda hızlıca bilgi veriyoruz.</p>
+        </details>
+
+        <details>
+          <summary>Ne kadar sürede dönüş yaparsınız?</summary>
+          <p>Uygun olduğumuz ilk anda geri dönüş sağlarız. En hızlı kanal: telefon veya WhatsApp.</p>
+        </details>
+
+        <details>
+          <summary>Adresinizi ekleyebilir miyiz?</summary>
+          <p>Evet. Tam adresi veya Google Maps linkini gönder, haritayı siteye ekleyeyim.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="iletisim">
+      <div class="head">
+        <div>
+          <h2>İletişim</h2>
+          <p>Fiyat/teklif ve randevu için hızlı iletişim.</p>
+        </div>
+        <p>Adres ve çalışma saatlerini yazarsan burayı “tam kurumsal” hale getiririm.</p>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <h3>Telefon</h3>
+          <div class="row">
+            <a class="btn primary" href="tel:+905337793076">0 (533) 779 30 76</a>
+            <a class="btn primary" href="tel:+905336662969">0 (533) 666 29 69</a>
+          </div>
+          <p class="hint">Teklif ve randevu için arayabilirsiniz.</p>
+        </div>
+
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <div class="row">
+            <a class="btn wa" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">0 (533) 779 30 76</a>
+            <a class="btn wa" href="https://wa.me/905336662969?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">0 (533) 666 29 69</a>
+          </div>
+          <p class="hint">Mesaj atın, en kısa sürede dönüş yapalım.</p>
+        </div>
+
+        <div class="card">
+          <h3>Konum</h3>
+          <div class="mapBox">
+            Buraya Google Maps gömme harita gelecek.<br/>
+            Tam adres veya Maps linkini gönder, ekleyeyim.
+          </div>
+          <p class="hint">Samsun / Türkiye</p>
+        </div>
+
+        <div class="card">
+          <h3>Çalışma Saatleri</h3>
+          <p class="hint">Henüz eklenmedi. Örn: Pzt-Cmt 09:00–19:00, Pazar Kapalı</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div>
+          <strong style="color:var(--text);">Yağmur Oto Lastik</strong><br/>
+          Samsun • Lastik Alım-Satım & Tamir
+        </div>
+        <div>
+          Telefon:
+          <a href="tel:+905337793076">0 (533) 779 30 76</a> •
+          <a href="tel:+905336662969">0 (533) 666 29 69</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<div class="fab">
+  <a class="btn wa" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp</a>
+</div>
+
 </body>
 </html>
