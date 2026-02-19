@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yağmur Oto Lastik | Samsun</title>
+  <meta name="description" content="Yağmur Oto Lastik – Samsun’da lastik satışı, ikinci el (varsa) ve lastik tamiri. Hemen arayın veya WhatsApp’tan yazın." />
+
+  <style>
+    :root{
+      --bg: #0b1220;          /* antrasit */
+      --bg2:#0f172a;          /* koyu mavi-antrasit */
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12);
+      --text:#e5e7eb;
+      --muted:#cbd5e1;
+      --accent:#3b82f6;       /* mavi */
+      --accent2:#60a5fa;      /* açık mavi */
+      --ok:#22c55e;           /* WhatsApp yeşili */
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(59,130,246,.20), transparent 60%),
+        radial-gradient(700px 450px at 85% 15%, rgba(96,165,250,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+    }
+    a{ color:inherit; }
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(96,165,250,.75));
+      box-shadow: 0 10px 28px rgba(59,130,246,.22);
+      display:grid; place-items:center;
+      font-weight:900; color:#071024;
+    }
+    .brand strong{ display:block; font-size:15px; letter-spacing:.2px; }
+    .brand span{ display:block; font-size:12px; color: var(--muted); opacity:.85; margin-top:2px; }
+
+    .menu{
+      display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+    }
+    .menu a{
+      text-decoration:none;
+      color: var(--muted);
+      font-size:14px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: background .15s ease, color .15s ease;
+    }
+    .menu a:hover{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+
+    /* Buttons */
+    .btns{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.22); }
+    .btn.primary{
+      background: linear-gradient(90deg, rgba(59,130,246,.95), rgba(96,165,250,.90));
+      border-color: rgba(255,255,255,.16);
+      color: #071024;
+    }
+    .btn.whatsapp{
+      background: rgba(34,197,94,.14);
+      border-color: rgba(34,197,94,.35);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 44px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-card{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-content{
+      padding: 26px;
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.25);
+      color: #dbeafe;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    .points{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .point{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .point strong{ display:block; color: var(--text); margin-bottom: 4px; font-size: 13px; }
+
+    /* Hero image */
+    .hero-img{
+      position:relative;
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1600275465584-5b23f2a3f6cb?auto=format&fit=crop&w=1200&q=70");
+      background-size: cover;
+      background-position: center;
+    }
+    .img-overlay{
+      position:absolute; inset:0;
+      padding: 18px;
+      display:flex; flex-direction:column; justify-content:flex-end;
+      gap: 10px;
+    }
+    .mini{
+      background: rgba(11,18,32,.62);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 14px;
+      backdrop-filter: blur(8px);
+    }
+    .mini .title{ font-weight:800; margin:0 0 6px; }
+    .mini .sub{ margin:0; color: var(--muted); font-size: 13px; line-height:1.5; }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -.01em;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+      font-size: 14px;
+      max-width: 520px;
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    .card{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.18);
+    }
+    .icon{
+      width:44px; height:44px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(59,130,246,.14);
+      border: 1px solid rgba(59,130,246,.25);
+      margin-bottom: 10px;
+      font-weight:900;
+      color:#dbeafe;
+    }
+    .card h3{ margin: 0 0 6px; font-size: 16px; }
+    .card p{ margin:0; color: var(--muted); line-height:1.6; font-size: 14px; }
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    details{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      color: var(--text);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height:1.6;
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .contact-card{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .row{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .hint{ color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+
+    footer{
+      padding: 26px 0 40px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 18px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      font-size: 13px;
+      line-height:1.6;
+    }
+
+    /* Floating WhatsApp button */
+    .fab{
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-img{ min-height: 260px; }
+      .points{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .menu{ display:none; } /* mobilde sade */
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto; }
+      .card, .btn{ transition:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top">
+          <div class="logo">Y</div>
+          <div>
+            <strong>Yağmur Oto Lastik</strong>
+            <span>Samsun | Lastik Satış & Tamir</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Üst Menü">
+          <a href="#hizmetler">Hizmetler</a>
+          <a href="#hakkimizda">Hakkımızda</a>
+          <a href="#sss">SSS</a>
+          <a href="#iletisim">İletişim</a>
+        </nav>
+
+        <div class="btns">
+          <a class="btn primary" href="tel:+905337793076">Hemen Ara</a>
+          <a class="btn whatsapp" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-content">
+              <div class="badge">Kurumsal • Hızlı Servis • Samsun</div>
+              <h1>Lastik Satışı ve Lastik Tamiri</h1>
+              <p class="lead">
+                Yağmur Oto Lastik, Samsun’da lastik satışı ve lastik tamiri hizmetleri sunar.
+                Güvenli sürüş için doğru lastik seçimi ve hızlı servis.
+              </p>
+
+              <div class="btns">
+                <a class="btn primary" href="tel:+905337793076">0 (533) 779 30 76</a>
+                <a class="btn primary" href="tel:+905336662969">0 (533) 666 29 69</a>
+                <a class="btn whatsapp" href="https://wa.me/905336662969?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp’tan Yaz</a>
+              </div>
+
+              <div class="points">
+                <div class="point"><strong>Hızlı Tamir</strong>Uygun çözüm, zamanında teslim.</div>
+                <div class="point"><strong>Güvenli İşçilik</strong>Lastiğe uygun onarım yaklaşımı.</div>
+                <div class="point"><strong>Müşteri Odaklı</strong>Şeffaf bilgi, net iletişim.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card hero-img" role="img" aria-label="Lastik servisi görseli">
+            <div class="img-overlay">
+              <div class="mini">
+                <p class="title">Hızlı İletişim</p>
+                <p class="sub">Fiyat ve randevu için arayın veya WhatsApp’tan yazın.</p>
+              </div>
+              <div class="mini">
+                <p class="title">Samsun’da Hizmet</p>
+                <p class="sub">Merkez ve çevre ilçelerden gelen müşterilerimize destek.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="hizmetler">
+        <div class="section-head">
+          <div>
+            <h2>Hizmetler</h2>
+            <p>Net, hızlı ve güvenilir lastik hizmetleri.</p>
+          </div>
+          <p>İhtiyacınıza göre doğru lastik seçimi ve tamir için bize ulaşın.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="icon">🛞</div>
+            <h3>Lastik Satışı</h3>
+            <p>İhtiyacınıza uygun lastik seçenekleri için telefonla bilgi alabilirsiniz.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🧰</div>
+            <h3>Lastik Tamiri</h3>
+            <p>Patlak/hasarlı lastikler için hızlı kontrol ve onarım.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">❄️☀️</div>
+            <h3>Mevsimlik Lastik Değişimi</h3>
+            <p>Yaz–kış lastik değişimi için randevu alabilirsiniz.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="hakkimizda">
+        <div class="section-head">
+          <div>
+            <h2>Hakkımızda</h2>
+            <p>Kurumsal duruş, güven veren hizmet anlayışı.</p>
+          </div>
+          <p>Yağmur Oto Lastik, müşteri memnuniyetini önceliklendiren bir hizmet yaklaşımıyla çalışır.</p>
+        </div>
+
+        <div class="card">
+          <h3>Yağmur Oto Lastik</h3>
+          <p>
+            Samsun’da lastik satışı ve lastik tamiri alanında hizmet veriyoruz.
+            Amacımız; güvenli sürüş için doğru yönlendirme, hızlı servis ve şeffaf iletişim sağlamaktır.
+          </p>
+        </div>
+      </section>
+
+      <section id="sss">
+        <div class="section-head">
+          <div>
+            <h2>Sık Sorulan Sorular</h2>
+            <p>En çok gelen sorulara kısa cevaplar.</p>
+          </div>
+          <p>Detaylı bilgi için arayabilir veya WhatsApp’tan yazabilirsiniz.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Lastik tamiri her patlakta yapılır mı?</summary>
+            <p>Hasarın yeri ve büyüklüğüne göre değişir. Uygunluk kontrolünden sonra bilgi verilir.</p>
+          </details>
+
+          <details>
+            <summary>Mevsimlik lastik değişimi için randevu gerekiyor mu?</summary>
+            <p>Yoğun dönemlerde randevu öneririz. Arayıp kısa sürede zaman planlayabilirsiniz.</p>
+          </details>
+
+          <details>
+            <summary>Fiyat bilgisini nasıl alabilirim?</summary>
+            <p>Lastik ebatı ve ihtiyacınıza göre değiştiği için telefonda hızlıca bilgi veriyoruz.</p>
+          </details>
+
+          <details>
+            <summary>İkinci el lastik satıyor musunuz?</summary>
+            <p>Eğer ikinci el satışı yapıyorsanız burayı “Evet” diye güncelleriz. Şimdilik bilgi için iletişime geçebilirsiniz.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="iletisim">
+        <div class="section-head">
+          <div>
+            <h2>İletişim</h2>
+            <p>Hızlı dönüş için arayın veya WhatsApp’tan yazın.</p>
+          </div>
+          <p>Adres ve çalışma saatlerini istersen hemen ekleyebiliriz.</p>
+        </div>
+
+        <div class="contact">
+          <div class="contact-card">
+            <h3>Telefon</h3>
+            <div class="row">
+              <a class="btn primary" href="tel:+905337793076">0 (533) 779 30 76</a>
+              <a class="btn primary" href="tel:+905336662969">0 (533) 666 29 69</a>
+            </div>
+            <p class="hint">Teklif ve randevu için arayabilirsiniz.</p>
+          </div>
+
+          <div class="contact-card">
+            <h3>WhatsApp</h3>
+            <div class="row">
+              <a class="btn whatsapp" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">0 (533) 779 30 76</a>
+              <a class="btn whatsapp" href="https://wa.me/905336662969?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">0 (533) 666 29 69</a>
+            </div>
+            <p class="hint">Mesaj atın, en kısa sürede dönüş yapalım.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot">
+          <div>
+            <strong style="color:var(--text);">Yağmur Oto Lastik</strong><br/>
+            Samsun • Lastik Satış & Tamir
+          </div>
+          <div>
+            <span>Telefon: </span>
+            <a href="tel:+905337793076">0 (533) 779 30 76</a> •
+            <a href="tel:+905336662969">0 (533) 666 29 69</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- floating WhatsApp button -->
+  <div class="fab">
+    <a class="btn whatsapp" href="https://wa.me/905337793076?text=Merhaba%2C%20Ya%C4%9Fmur%20Oto%20Lastik%E2%80%99ten%20fiyat%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</body>
+</html>
